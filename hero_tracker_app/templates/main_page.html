@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Bootstrap Tables -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+        <!-- JavaScript stuff for Bootstrap - includes jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <!-- JavaScript for Bootstrap Tables -->
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+        <!-- Other meta tags -->
+        <title>FEH hero organizer</title> <!-- Title of site goes here-->
+        <meta name="Description" content="FEH hero organizer page"> <!-- Explanation that shows up in search engines goes here.-->
+        {{ user_heroes|json_script:"user_heroes" }} <!-- Needed so that JavaScript can process it-->
+        <script id="user_heroes" src="{% static 'JavaScript/main.js' %}"></script>
+        <link rel="stylesheet" type="text/css" href="{% static 'CSS/main_page_styles.css' %}"> <!-- CSS page goes here - check the name of the file and make sure it matches with the one for href!-->
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-md navbar-dark sticky-top">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Add hero</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Edit hero</a>
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Remove hero</a>
+            <a class="nav-link" href="/all_heroes">All heroes</a>
+            <a class="nav-link" href="/stats_page">Your stats</a>
+            <a class="nav-link" href="/log_out">Log out</a>
+        </nav>
+        <div class="main-body">
+            <h1>{{ user.alias }}'s Hero Organizer</h1>
+            <div class="my-toolbar">
+                <label class="checkbox disabled">
+                    <input id="random_id" type="checkbox" disabled>Include weapons and skills in stats
+                </label>
+            </div>
+            <table class="hero_table"></table>
+            <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum sed metus eleifend, lobortis neque ac, fermentum risus. Quisque vel ultrices turpis. Donec maximus efficitur nisi ut hendrerit. Quisque quis tincidunt purus, at commodo urna. Proin eu odio aliquam, convallis est vel, semper diam. Nunc at enim non massa pharetra tincidunt eu et nibh. Suspendisse potenti. Phasellus eu auctor ex.
+            </p>
+            <p>
+            Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Pellentesque at vulputate mi, nec mollis erat. Nam aliquam, eros vel luctus suscipit, augue lacus pretium augue, et gravida enim ligula non leo. Vivamus in nisl nisi. Curabitur vitae mollis augue. Donec mollis dolor eu tortor ornare pharetra. Fusce vel suscipit massa, ut auctor tortor. Aliquam vel turpis et ex elementum vulputate. Praesent sed elit malesuada nisi iaculis dapibus. Nam vehicula enim id leo tincidunt bibendum. Sed maximus ligula in tellus suscipit vehicula. Curabitur pretium euismod nulla id eleifend.
+            </p>
+            <p>
+            Curabitur tincidunt fringilla dui in posuere. Integer at molestie mi. Pellentesque sodales, ligula nec lacinia tincidunt, erat purus cursus sapien, sit amet accumsan nunc nulla vel elit. Aliquam maximus dolor ut tortor volutpat condimentum. Sed et vestibulum magna. Sed ut tincidunt risus. Duis ut dictum mi. Morbi et leo sed est dignissim interdum eu vitae enim. Aliquam sem erat, accumsan ut molestie vel, condimentum at neque. Suspendisse consequat ipsum ac nisi accumsan, et venenatis velit sodales. Ut ullamcorper euismod mauris in aliquet. Donec auctor, arcu luctus luctus varius, felis velit vulputate lectus, vel ullamcorper dui dolor a ante. Vivamus augue sapien, mollis in posuere sed, gravida non ligula. Fusce vitae ex erat. Maecenas mauris nibh, finibus sed augue eget, imperdiet porta nisl. Vivamus pellentesque lorem in placerat eleifend.
+            </p>
+            <p>
+            Proin at consequat ante. Sed porttitor vehicula sem nec elementum. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur egestas sodales aliquam. Mauris vitae tellus lacinia, tincidunt nulla id, sagittis mauris. Donec urna lectus, venenatis et efficitur sed, semper convallis elit. Curabitur in diam odio. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Sed sed sollicitudin libero. Curabitur laoreet pulvinar sem sed imperdiet. Sed lacinia, metus sit amet commodo tempor, erat orci euismod augue, et venenatis nisi eros sit amet massa. Nulla facilisi. Sed tincidunt ipsum eget scelerisque hendrerit. Sed dapibus interdum lacus, ut volutpat erat fringilla bibendum. Sed fringilla aliquet leo, vel dapibus tortor rutrum at.
+            </p>
+            <p>
+            Duis auctor bibendum massa, nec bibendum massa porttitor sit amet. Praesent ac justo tempor nulla posuere iaculis sed vel nulla. Maecenas dignissim scelerisque justo sed vestibulum. Aliquam non nunc semper, vehicula arcu eu, condimentum nisl. Pellentesque ullamcorper risus id purus tempus, a vulputate purus tincidunt. Praesent sit amet pellentesque orci, consequat luctus erat. Praesent sollicitudin urna non laoreet gravida. Donec vitae neque vel libero viverra pulvinar. Mauris non sapien eget ex dapibus semper in nec ligula. Morbi sit amet dignissim urna, sed aliquam sapien.
+            </p>
+            <!--<table class="new_hero_table"></table>-->
+        </div>
+
+    </body>
+</html>

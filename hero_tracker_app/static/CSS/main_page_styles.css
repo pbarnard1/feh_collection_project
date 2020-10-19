@@ -1,0 +1,18 @@
+* {
+    margin: 0;
+    /*color: #abcdef;*/
+    padding: 0;
+}
+
+nav {
+    background-color: #ddaadd;
+}
+
+.main-body {
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+.main-body h1 {
+    text-align: center;
+}

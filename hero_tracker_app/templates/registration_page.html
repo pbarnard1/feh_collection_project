@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        {% load static %}
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- Bootstrap Tables -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.css">
+        <!-- JavaScript stuff for Bootstrap - includes jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <!-- JavaScript for Bootstrap Tables -->
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+        <!-- Other meta tags -->
+        <title>FEH hero organizer log-in page</title> <!-- Title of site goes here-->
+        <meta name="Description" content="FEH organizer log-in page"> <!-- Explanation that shows up in search engines goes here.-->
+        {{ all_heroes|json_script:"all_heroes" }} <!-- Needed so that JavaScript can process it-->
+        <!--<script id="all_heroes" src="{% static 'JavaScript/main.js' %}"></script>-->
+        <!--<link rel="stylesheet" type="text/css" href="{% static 'CSS/main_page_styles.css' %}">--> <!-- CSS page goes here - check the name of the file and make sure it matches with the one for href!-->
+    </head>
+    <body>
+        <form method="POST" action="/register">
+            {% csrf_token %}
+            <h1>Registration</h1>
+            <p>Already a member?  Sign in <a href="/log_in_page">here</a>!</p>
+            <div class="form-group row">
+                <label for="first_name" class="col-2 col-form-label">First name:</label>
+                <div class="col-4">
+                    <input type="text" id="first_name" name="first_name" class="col form-control {{ tags.0 }}" value="{{ first_name }}" placeholder="First name goes here">
+                    <div class="invalid-feedback">First ame must be 2-255 characters long and contain only letters.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="last_name" class="col-2 col-form-label">Last name:</label>
+                <div class="col-4">
+                    <input type="text" id="last_name" name="last_name" class="col form-control {{ tags.1 }}" value="{{ last_name }}" placeholder="Last name goes here">
+                    <div class="invalid-feedback">Last name must be 2-255 characters long and contain only letters.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="alias" class="col-2 col-form-label">Alias:</label>
+                <div class="col-4">
+                    <input type="text" id="alias" name="alias" class="col form-control {{ tags.2 }}" value="{{ alias }}" placeholder="Alias goes here" aria-describedby="aliasHelpBlock">
+                    <small id="aliasHelpBlock">Choose an alias that another user hasn't claimed.</small>
+                    <div class="invalid-feedback">Alias must be 2-255 characters long and unique.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="email" class="col-2 col-form-label">E-mail:</label>
+                <div class="col-4">
+                    <input type="text" id="email" name="email" class="col form-control {{ tags.3 }}" value="{{ email }}" placeholder="E-mail goes here">
+                    <div class="invalid-feedback">E-mail is invalid.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pwd" class="col-2 col-form-label">Password:</label>
+                <div class="col-4">
+                    <input type="password" id="pwd" name="pwd" class="col form-control {{ tags.4 }}" placeholder="Password goes here" aria-describedby="passwordHelpBlock">
+                    <small id="passwordHelpBlock">Your password must be at least 8 characters long.</small>
+                    <div class="invalid-feedback">Passwords do not match or aren't long enough.</div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="pwd2" class="col-2 col-form-label">Confirm password:</label>
+                <div class="col-4">
+                    <input type="password" id="pwd2" name="pwd2" class="col form-control" placeholder="Password goes here">
+                    <div class="invalid-feedback">Passwords do not match or aren't long enough.</div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </body>
+</html>
